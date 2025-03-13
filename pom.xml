@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.airport</groupId>
-	<artifactId>capstone-demo-vijay</artifactId>
+	<artifactId>cAirport-Management-System</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>capstone-demo-vijay</name>
+	<name>Airport-Management-System</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
