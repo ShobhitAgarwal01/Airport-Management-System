@@ -68,6 +68,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         user.setConfirmPassword(passwordEncoder.encode(registrationRequest.getConfirmPassword()));
         user.setRoles(role);
         user.setMobileNumber(registrationRequest.getMobileNumber());
+        user.setApprovalStatus(role.contains(Role.ADMIN) ? "APPROVED" : "PENDING");
 
         User savedUser = userRepository.save(user);
 
