@@ -49,6 +49,17 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<ApiError>(apiError, HttpStatus.CONFLICT);
     }
 
+    @ExceptionHandler(ApprovalPendingException.class)
+    public ResponseEntity<ApiError> ApprovalPendingException(ApprovalPendingException exception) {
+        ApiError apiError = new ApiError();
+        apiError.setStatusCode(HttpStatus.FORBIDDEN.value());
+        apiError.setStatus(HttpStatus.FORBIDDEN);
+        apiError.setMessage(exception.getMessage());
+        apiError.setSubError(new ArrayList<>());
+        return new ResponseEntity<ApiError>(apiError, HttpStatus.FORBIDDEN);
+    }
+    
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiError> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
         List<String> errors = exception.getBindingResult().getAllErrors().stream().map(error -> error.getDefaultMessage()).collect(Collectors.toList());
