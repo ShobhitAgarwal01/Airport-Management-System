@@ -24,10 +24,10 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(name = "first_name")
-    private String first_name;
+    private String firstName;
 
     @Column(name = "last_name")
-    private String last_name;
+    private String lastName;
 
     @Column(name = "email")
     private String email;
@@ -46,19 +46,19 @@ public class User implements UserDetails {
     
 
     public String getFirst_name() {
-		return first_name;
+		return firstName;
 	}
 
 	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+		this.firstName = firstName;
 	}
 
 	public String getLast_name() {
-		return last_name;
+		return lastName;
 	}
 
 	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+		this.lastName = lastName;
 	}
 
 	public String getAge() {
@@ -94,6 +94,9 @@ public class User implements UserDetails {
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
+
+    @Column(name="approval_status")
+    private String approvalStatus;
 
 
     @Override
@@ -157,6 +160,14 @@ public class User implements UserDetails {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
+    public String getApprovalStatus() {
+		return approvalStatus;
+	}
+
+	public void setApprovalStatus(String approvalStatus) {
+		this.approvalStatus = approvalStatus;
+	}
 
 
 }
