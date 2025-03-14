@@ -39,6 +39,16 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<ApiError>(apiError, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(HangerNotAvailableException.class)
+    public ResponseEntity<ApiError> HangerNotAvailableException(HangerNotAvailableException exception) {
+        ApiError apiError = new ApiError();
+        apiError.setStatusCode(HttpStatus.CONFLICT.value());
+        apiError.setStatus(HttpStatus.CONFLICT);
+        apiError.setMessage(exception.getMessage());
+        apiError.setSubError(new ArrayList<>());
+        return new ResponseEntity<ApiError>(apiError, HttpStatus.CONFLICT);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiError> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
         List<String> errors = exception.getBindingResult().getAllErrors().stream().map(error -> error.getDefaultMessage()).collect(Collectors.toList());
